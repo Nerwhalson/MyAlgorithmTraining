@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include <sstream>
+#include <istream>
 
 using namespace std;
 
@@ -172,11 +173,6 @@ int main()
 	int num;
 	string temp;
 	nlist.init();
-	temp = getline();
-	for (int i = 0; i < temp.size(); i++)
-	{
-
-	}
 
 	nlist.destory();
 	return 0;
