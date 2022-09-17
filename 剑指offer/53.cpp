@@ -5,33 +5,41 @@ using namespace std;
 
 class Solution {
 public:
-    int bin_search(vector<int>& nums, int target, int start, int end){
-        int sub = (start + end) / 2;
-        if(nums[sub] == target)
-            return sub;
-        else if(start >= end-1)
-            return -1;
-        else
-            if(nums[sub] > target)
-                return bin_search(nums, target, start, sub);
+    int bin_search(vector<int>& nums, int target, bool large){
+        int mid, ans = nums.size(), left = 0, right = nums.size() - 1;
+        while(left <= right)
+        {
+            mid = (left + right) / 2;
+            if(large)
+                if(nums[mid] > target)
+                {
+                    right = mid - 1;
+                    ans = mid;
+                }
+                else
+                    left = mid + 1;
             else
-                return bin_search(nums, target, sub, end);
+                if(nums[mid] >= target)
+                {
+                    right = mid -1;
+                    ans = mid;
+                }
+                else
+                    left = mid + 1;
+        }
+
+        return ans;
     }
 
     int search(vector<int>& nums, int target) {
-        if(nums.empty())
-            return 0;
-        int i, count = 0, sub = bin_search(nums, target, 0, nums.size()-1);
-        cout << sub;
-        int len = nums.size();
-        if(sub == -1)
-            return 0;
-        for(i = sub; nums[i] == target && i < len; i++, count++);
-        for(i = sub; nums[i] == target && i >= 0; i--, count++);
-        count--;
+        int left = bin_search(nums, target, false), right = bin_search(nums, target, true) - 1;
+        int ans = 0;
+        if(left <= right && right < nums.size() && nums[left] == target && nums[right] == target)
+            ans = right - left + 1;
 
-        return count;
+        return ans;
     }
+
 };
 
 int main()
