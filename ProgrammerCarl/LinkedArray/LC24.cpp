@@ -1,4 +1,6 @@
+#include <cstddef>
 #include <iostream>
+#include <limits>
 
 using namespace std;
 
@@ -14,6 +16,24 @@ struct ListNode {
 class Solution {
 public:
     ListNode* swapPairs(ListNode* head) {
+        if(head != nullptr && head->next != nullptr){
+            ListNode* left = head;
+            ListNode* pre = head;
+            ListNode* right = head->next;
+            left->next = right->next;
+            right->next = left;
+            head = right;
+            while(left->next != nullptr){
+                pre = left;
+                left = left->next;
+                right = left->next;
+                if(right != nullptr){
+                    left->next = right->next;
+                    right->next = left;
+                    pre->next = right;
+                }
+            }
+        }
         return head;
     }
 };
@@ -22,7 +42,7 @@ int main(){
     Solution run;
     struct ListNode *head = new struct ListNode(1);
     struct ListNode *temp = head;
-    for(int i = 1; i < 5; i++){
+    for(int i = 1; i < 7; i++){
         temp->next = new struct ListNode(i+1);
         temp = temp->next;
     }
@@ -32,7 +52,7 @@ int main(){
         temp = temp->next;
     }
     cout << endl;
-    temp = run.reverseList(head);
+    temp = run.swapPairs(head);
     while(temp != nullptr){
         cout << temp->val << " ";
         temp = temp->next;
