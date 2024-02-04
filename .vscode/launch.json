@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "d:/Data/UniversityLearningData/Intership/MyAlgorithmTraining/ProgrammerCarl/String",
-      "program": "d:/Data/UniversityLearningData/Intership/MyAlgorithmTraining/ProgrammerCarl/String/build/Debug/outDebug",
+      "cwd": "d:/Data/UniversityLearningData/Intership/MyAlgorithmTraining/ProgrammerCarl/Stack",
+      "program": "d:/Data/UniversityLearningData/Intership/MyAlgorithmTraining/ProgrammerCarl/Stack/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
